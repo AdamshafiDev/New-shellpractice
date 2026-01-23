@@ -16,8 +16,7 @@ then
   echo "the script is running with root access"
   fi
 
-VALIDATE()
-{ 
+VALIDATE(){ 
     if [ $1 -eq 0 ]
      then
      echo "Installling $2...SUCCESSS"
@@ -29,7 +28,7 @@ VALIDATE()
    
    dnf list installed nginx
 
-     if [ $? - ne 0 ]
+     if [ $? -ne 0 ]
     then
         echo "nginx is not install....Going to install now"
         dnf install nginx -y
@@ -40,7 +39,7 @@ VALIDATE()
 
     dnf list installed mysql
 
-     if [ $? - ne 0 ]
+     if [ $? -ne 0 ]
      then
        echo "mysql is not install....Going to install now"
         dnf install mysql -y
@@ -51,7 +50,7 @@ VALIDATE()
 
     dnf list installed python3
 
-     if [ $? - ne 0 ]
+     if [ $? -ne 0 ]
      then
        echo "python3 is not install....Going to install now"
         dnf install python3 -y
