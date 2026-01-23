@@ -5,7 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-PACK=("nginx" "mysql" "python3" "httpd")
+#PACK=("nginx" "mysql" "python3" "httpd")
 
 echo "the script started time:$(date)"
 
@@ -27,7 +27,8 @@ VALIDATE(){
      fi
 }
 
-   for pack in ${PACK[@]}
+   #for pack in ${PACK[@]}
+    for pack in $@
 
    do
     dnf list installed $pack
