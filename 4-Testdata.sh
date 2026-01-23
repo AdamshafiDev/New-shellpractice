@@ -27,7 +27,7 @@ VALIDATE(){
      fi
 }
 
-   for PACKx in ${PACK[@]}
+   for pack in ${PACK[@]}
 
    do
     dnf list installed $pack
