@@ -16,15 +16,41 @@ then
   echo "the script is running with root access"
   fi
 
-# VALIDATE()
-# { 
-#     if [ $1 -eq 0 ]
-#      then
-#      echo "Installling $2...SUCCESSS"
-#      else
-#      echo "installing $2 .....Failure"
-#      exit 1
-#      fi
-# }
+VALIDATE()
+{ 
+    if [ $1 -eq 0 ]
+     then
+     echo "Installling $2...SUCCESSS"
+     else
+     echo "installing $2 .....Failure"
+     exit 1
+     fi
+}
+   
+   dnf list installed nginx
+
+     if [ $? - ne 0 ]
+    then
+       dnf install nginx -y
+        echo "nginx is not install....Going to install now"
+        VALIDATE $? "nginx"
+        else
+        echo "nginx is already installed ....nothing to do"
+     fi
+
+    dnf list installed mysql
+
+     if [ $? - ne 0 ]
+    then
+       dnf install mysql -y
+        echo "mysql is not install....Going to install now"
+        VALIDATE $? "nginx"
+        else
+        echo "mysql is already installed ....nothing to do"
+
+
+    fi
+       
+
 
 
