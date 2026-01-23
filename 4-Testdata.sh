@@ -5,6 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+PACK=("nginx" "mysql" "python3" "httpd")
 
 echo "the script started time:$(date)"
 
@@ -25,39 +26,20 @@ VALIDATE(){
      exit 1
      fi
 }
-   
-   dnf list installed nginx
 
+   for PACKx in ${PACK[@]}
+
+   do
+    dnf list installed $pack
      if [ $? -ne 0 ]
     then
-        echo "nginx is not install....Going to install now"
-        dnf install nginx -y
-        VALIDATE $? "nginx"
+        echo "$pack is not install....Going to install now"
+        dnf install $pack -y
+        VALIDATE $? "$pack"
     else
-        echo "nginx is already installed ....nothing to do"
+        echo "$pack is already installed ....nothing to do"
      fi
 
-    dnf list installed mysql
-
-     if [ $? -ne 0 ]
-     then
-       echo "mysql is not install....Going to install now"
-        dnf install mysql -y
-        VALIDATE $? "nginx"
-    else
-        echo "mysql is already installed ....nothing to do"
-    fi
-
-    dnf list installed python3
-
-     if [ $? -ne 0 ]
-     then
-       echo "python3 is not install....Going to install now"
-        dnf install python3 -y
-        VALIDATE $? "python3"
-    else
-        echo "pyrhon3 is already installed ....nothing to do"
-    fi
-       
-
-      
+   done 
+   
+   
