@@ -31,10 +31,10 @@ VALIDATE()
 
      if [ $? - ne 0 ]
     then
-       dnf install nginx -y
         echo "nginx is not install....Going to install now"
+        dnf install nginx -y
         VALIDATE $? "nginx"
-        else
+    else
         echo "nginx is already installed ....nothing to do"
      fi
 
@@ -42,28 +42,23 @@ VALIDATE()
 
      if [ $? - ne 0 ]
      then
-       dnf install mysql -y
-        echo "mysql is not install....Going to install now"
+       echo "mysql is not install....Going to install now"
+        dnf install mysql -y
         VALIDATE $? "nginx"
-        else
+    else
         echo "mysql is already installed ....nothing to do"
-
-
     fi
-       
 
-       dnf list installed httpd
+    dnf list installed python3
 
      if [ $? - ne 0 ]
      then
-       dnf install httpd -y
-        echo "httpd is not install....Going to install now"
-        VALIDATE $? "httpd"
-        else
-        echo "httpd is already installed ....nothing to do"
-
-
+       echo "python3 is not install....Going to install now"
+        dnf install python3 -y
+        VALIDATE $? "python3"
+    else
+        echo "pyrhon3 is already installed ....nothing to do"
     fi
+       
 
-
-
+      
