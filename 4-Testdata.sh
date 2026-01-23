@@ -41,7 +41,7 @@ VALIDATE()
     dnf list installed mysql
 
      if [ $? - ne 0 ]
-    then
+     then
        dnf install mysql -y
         echo "mysql is not install....Going to install now"
         VALIDATE $? "nginx"
@@ -51,6 +51,19 @@ VALIDATE()
 
     fi
        
+
+       dnf list installed httpd
+
+     if [ $? - ne 0 ]
+     then
+       dnf install httpd -y
+        echo "httpd is not install....Going to install now"
+        VALIDATE $? "httpd"
+        else
+        echo "httpd is already installed ....nothing to do"
+
+
+    fi
 
 
 
