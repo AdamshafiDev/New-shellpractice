@@ -1,3 +1,3 @@
 #!/bin/bash
- Name="Adam shafi"
+ Name="Adam"
   echo $Name | wc -m
