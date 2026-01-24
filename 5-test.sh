@@ -1,3 +1,3 @@
 #!/bin/bash
- Name="Adam shafi"
-  echo -n $Name | tr -d ' '| wc -c
+ #Name="Adam shafi"
+  echo -n $@ | tr -d ' '| wc -c
