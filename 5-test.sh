@@ -1,3 +1,3 @@
 #!/bin/bash
  Name="Adam shafi"
-  echo $Name | wc -m |tr -d " "
+  echo $Name | wc -m |tr -d  ' '
