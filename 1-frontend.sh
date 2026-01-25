@@ -34,8 +34,8 @@ then
      fi
    }
 
-    # dnf module list nginx &>>$Log_file
-    # VALIDATE $? "Nginx is module display"
+     dnf module list nginx &>>$Log_file
+     VALIDATE $? "Nginx is module display"
 
     dnf module disable nginx -y &>>$Log_file
     VALIDATE $? "disablling nginx"
@@ -43,7 +43,7 @@ then
     dnf  module enable nginx:1.24 -y &>>$Log_file
     VALIDATE $? "enableing nginx:1.24"
 
-    dnf install nging -y &>>$Log_file
+    dnf install nginx -y &>>$Log_file
     VALIDATE $? "nginx is installed"
 
     systemctl enable nginx &>>$Log_file
