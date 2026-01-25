@@ -27,9 +27,9 @@ then
    {
     if [ $1 -eq 0 ]
     then
-    echo -e "$Y Installing $2.....$G success" | tee -a $Log_file
+    echo -e "$$2 is....$G success" | tee -a $Log_file
      else 
-     echo -e "$Y Installing $2......$R failure"| tee -a $Log_file
+     echo -e "$2 is.....$R failure"| tee -a $Log_file
      exit 1
      fi
    }
