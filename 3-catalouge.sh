@@ -43,10 +43,18 @@ VALIDATE $? "enabled nodejs:20"
 dnf install nodejs -y
 VALIDATE $? "Installing nodejs"
 
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-VALIDATE $? "systemuser cerated"
+id roboshop
 
-mkdir /app 
+  if [ $? -ne 0 ]
+   then
+        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+        VALIDATE $? "systemuser cerated"
+  else
+     echo "roboshop user already created....$Y skipping"
+     fi
+
+
+mkdir -p /app 
 VALIDATE $? "Directory cerated"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
