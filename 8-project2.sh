@@ -47,4 +47,4 @@ then
                 fi
 
     done
-    echo "the script end time:($date)"
+    echo "the script end time:$date
