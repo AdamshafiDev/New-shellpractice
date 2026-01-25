@@ -8,7 +8,7 @@ N="\e[0m"
 LOG_FOLDER="/var/log/shelllogs.logs"
 Script_name=$(echo $0 | cut -d "." -f1)
 Log_file="$LOG_FOLDER/$Script_name.log"
-SCRIPT_DIR=$PWD
+SCRIPT_DIR=$pwd
 
  mkdir -p $LOG_FOLDER
 
@@ -65,7 +65,7 @@ then
 
     rm -rf /etc/nginx/nginx.conf &>>$Log_file
     VALIDATE $? "Removing the default content"
-    
+
 
     cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
     VALIDATE $? "copying the nginx confiq data"
