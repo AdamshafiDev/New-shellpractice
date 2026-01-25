@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USERID=$(id -u)
-TIME_STAMP=$(date)
+#TIME_STAMP=$(date)
  echo "the script started date::$TIME_STAMP"
 
 if [ $USERID -ne 0 ]
