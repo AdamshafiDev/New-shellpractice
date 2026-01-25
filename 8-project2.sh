@@ -15,23 +15,23 @@ pack=("nginx" "mysql" "nodejs")
  mkdir -p $Log_file
 
  TIME_STAMP=$(date)
-  echo "the script start time$TIME_STAMP" 
+  echo "the script start time$TIME_STAMP" | tee -a $Log_file
 
 if [ $USERID -ne 0 ]
 then
-  echo -e "$$R ERROR: please run the script with  root access"
+  echo -e "$$R ERROR: please run the script with  root access" | tee -a $Log_file
   exit 1
    else 
-   echo -e "$Y the script running with root access"
+   echo -e "$Y the script running with root access" | tee -a $Log_file
  fi
 
    VALIDATE()
    {
     if [ $1 -eq 0 ]
     then
-    echo -e "$Y Installing $2.....$G success"
+    echo -e "$Y Installing $2.....$G success" | tee -a $Log_file
      else 
-     echo -e "$Y Installing $2......$R failure"
+     echo -e "$Y Installing $2......$R failure"| tee -a $Log_file
      exit 1
      fi
    }
@@ -42,11 +42,11 @@ then
               if [ $? -ne 0 ]
                then
 
-               echo "$cover is not insall...going to inatall now"
+               echo "$cover is not insall...going to inatall now" | tee -a $Log_file
                 dnf install $cover -y
                 VALIDATE $? "$cover"
                 else
-            echo " $cover is already installed nothing to do"
+            echo " $cover is already installed nothing to do" | tee -a $Log_file
                 fi
 
     done
