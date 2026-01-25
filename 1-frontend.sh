@@ -65,6 +65,7 @@ then
 
     rm -rf /etc/nginx/nginx.conf &>>$Log_file
     VALIDATE $? "Removing the default content"
+    
 
     cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
     VALIDATE $? "copying the nginx confiq data"
