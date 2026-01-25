@@ -1,10 +1,10 @@
 #!/bin/bash
 USERID=$(id -u)
-R="\e[31m"
+R="\e[31m"s
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-LOG_FOLDER=$(/var/log/shelllogs.log)
+LOG_FOLDER="/var/log/shelllogs.logs"
 Script_name=$(echo $0 | cut -d "." -f1)
 Log_file="$LOG_FOLDER/$Script_name.log"
 pack=("nginx" "mysql" "nodejs")
