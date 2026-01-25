@@ -46,6 +46,6 @@ then
                 VALIDATE $? "$cover"
                 else
             echo -e "$G $cover is already installed nothing to do"
-             
+             fi
 
         done
