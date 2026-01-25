@@ -23,8 +23,7 @@ then
    echo -e "$Y the script running with root access" | tee -a $Log_file
  fi
 
-   VALIDATE()
-   {
+   VALIDATE(){
     if [ $1 -eq 0 ]
     then
     echo -e "$$2 is....$G success" | tee -a $Log_file
