@@ -36,7 +36,7 @@ then
      fi
    }
 
-    for cover in ${$pack[@]}
+    for cover in ${pack[@]}
     do
             dnf list installed $cover
               if [ $? -ne 0 ]
