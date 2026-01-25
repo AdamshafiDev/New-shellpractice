@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 TIME_STAMP=$(date)
-PACKAGE=("Mysql" "nginx" "nodejs")
+PACKAGE=("mysql" "nginx" "nodejs")
 
  echo "the script started date::$TIME_STAMP"
 
