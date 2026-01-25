@@ -35,6 +35,7 @@ then
      exit 1
      fi
    }
+
      for cover in ${$pack[@]}
         do
             dnf list installed $cover
@@ -45,7 +46,7 @@ then
                 dnf install $cover -y
                 VALIDATE $? "$cover"
                 else
-            echo -e "$G $cover is already installed nothing to do"
+            echo " $cover is already installed nothing to do"
              fi
 
         done
