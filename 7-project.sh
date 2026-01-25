@@ -9,23 +9,23 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
  mkdir -p $LOG_FOLDER
 
- echo "the script started date::$TIME_STAMP" | tee -a >$LOG_FILE
+ echo "the script started date::$TIME_STAMP" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
-   echo "ERROR:plese run the script with root access" | tee -a >$LOG_FILE
+   echo "ERROR:plese run the script with root access" | tee -a $LOG_FILE
    exit 1
 else
-   echo "the script is running with root access" | tee -a >$LOG_FILE
+   echo "the script is running with root access" | tee -a $LOG_FILE
 fi
    
    VALIDATE(){
 
         if [ $1 -eq 0 ]
         then
-          echo "Installing package:$2.....successs" | tee -a >$LOG_FILE
+          echo "Installing package:$2.....successs" | tee -a $LOG_FILE
         else
-          echo "Installing package:$2.....Failure"  | tee -a >$LOG_FILE
+          echo "Installing package:$2.....Failure"  | tee -a $LOG_FILE
           exit 1
          fi 
    }
@@ -35,11 +35,11 @@ fi
       dnf list installed mysql &>>LOG_FILE
        if [ $? -ne 0 ]
        then
-          echo "$cover is not install going to install now" | tee -a >$LOG_FILE
+          echo "$cover is not install going to install now" | tee -a $LOG_FILE
           dnf install $cover -y &>>LOG_FILE
           VALIDATE $? "$cover"
        else
-          echo "$cover is install ..Nothing to do" | tee -a >$LOG_FILE
+          echo "$cover is install ..Nothing to do" | tee -a $LOG_FILE
        fi
    done
      
