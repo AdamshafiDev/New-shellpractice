@@ -13,19 +13,19 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
 if [ $USERID -ne 0 ]
 then
-   echo "ERROR:plese run the script with root access" 
+   echo -e  "ERROR:plese run the script with root access" | tee -a $LOG_FILE
    exit 1
 else
-   echo "the script is running with root access" 
+   echo -e  "the script is running with root access" | tee -a $LOG_FILE
 fi
    
    VALIDATE(){
 
         if [ $1 -eq 0 ]
         then
-          echo "Installing package:$2.....successs" 
+          echo -e  "Installing package:$2.....successs" | tee -a $LOG_FILE 
         else
-          echo "Installing package:$2.....Failure"  
+          echo -e "Installing package:$2.....Failure"  | tee -a $LOG_FILE
           exit 1
          fi 
    }
