@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 TIME_STAMP=$(date)
-Pack=("Mysql" "nginx" "nodejs")
+PACKAGE=("Mysql" "nginx" "nodejs")
  echo "the script started date::$TIME_STAMP"
 
 if [ $USERID -ne 0 ]
@@ -23,12 +23,16 @@ fi
           exit 1
    }
 
-   dnf  list installed mysql
-   
-     for Pack  in ( $Pack[@])
-     do
-       echo "$pack is not install going to install"
-       dnf install $pack -y
-       Validate $? "mysql"
-       
-       done
+   for Pack in ${PACKAGE[@]}
+   do
+      dnf list installed mysql
+       if [ $? -ne 0 ]
+       then
+          echo "$Pack is not install going to install now"
+          dnf install $Pack -y
+          VALIDATE $? "$Pack"
+       else
+          echo "$Pack is install ..Nothing to do"
+       fi
+   done
+     
