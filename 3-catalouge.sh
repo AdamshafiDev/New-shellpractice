@@ -85,9 +85,15 @@ cp $SCRIPT_DIR/mongo.repo   /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y &>>$Log_file
 VALIDATE $? "Installing momgodb client"
 
+STATUS=$(mongosh --host mongodb.adamshafi.shop --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
+
+ if  [ $STATUS -lt 0 ]
+ then
 mongosh --host mongodb.adamshafi.shop </app/db/master-data.js &>>$Log_file
 VALIDATE $? "Loading data into mongodb"
-
+else
+echo -e "Data already loaded ...$Y SkIIPING"
+fi
 
 
 
