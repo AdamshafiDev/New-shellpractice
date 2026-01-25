@@ -33,7 +33,7 @@ then
      fi
    }
 
-      cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
+      cp mongodb.repo /etc/yum.repos.d/mongo.repo
       VALIDATE $? "copying mongodb repos"
 
 
