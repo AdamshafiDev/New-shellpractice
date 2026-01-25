@@ -3,7 +3,12 @@
 USERID=$(id -u)
 TIME_STAMP=$(date)
 PACKAGE=("mysql" "nginx" "nodejs")
+LOG_FOLDER="/var/log/shellscript.log"
+SCRIPT_NAME="$0 | cut -d "." -f1"
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
+ mkdir -p $LOG_FOLDER
+ 
  echo "the script started date::$TIME_STAMP"
 
 if [ $USERID -ne 0 ]
