@@ -38,11 +38,14 @@ then
      for cover in {$pack[@]}
         do
             dnf list installed mysql
+              if [ $? -ne 0 ]
+               then
 
                echo "$cover is not insall...going to inatall now"
                 dnf install $cover -y
                 VALIDATE $? "$cover"
-            echo-e "$G $cover is already installed nothing to do"
+                else
+            echo -e "$G $cover is already installed nothing to do"
              
 
         done
