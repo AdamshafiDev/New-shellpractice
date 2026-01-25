@@ -3,6 +3,7 @@
 USERID=$(id -u)
 TIME_STAMP=$(date)
 PACKAGE=("Mysql" "nginx" "nodejs")
+
  echo "the script started date::$TIME_STAMP"
 
 if [ $USERID -ne 0 ]
@@ -21,6 +22,7 @@ fi
         else
           echo "Installing package:$2.....Failure" 
           exit 1
+         fi 
    }
 
    for Pack in ${PACKAGE[@]}
