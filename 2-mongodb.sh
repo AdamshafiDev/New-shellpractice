@@ -8,7 +8,7 @@ N="\e[0m"
 LOG_FOLDER="/var/log/shelllogs.logs"
 Script_name=$(echo $0 | cut -d "." -f1)
 Log_file="$LOG_FOLDER/$Script_name.log"
-SCRIPT_DIR=$PWD
+#SCRIPT_DIR=$PWD
 
  mkdir -p $LOG_FOLDER
 
@@ -47,8 +47,8 @@ then
      systemctl start mongod
      VALIDATE "starting mongodb"
 
-     sed -i 's/127.0.0.1/ 0.0.0.0/g' /etc/mongod.conf
+     sed -i 's/127.0.0.1/ 0.0.0.0/g'/etc/mongod.conf
      VALIDATE $? "Editing for confiq file for remote connection"
 
      systemctl restart mongod
-     VALIDATE $? "Retsrted mongodb"
+     VALIDATE $? "Restarted mongodb"
