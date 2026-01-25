@@ -42,8 +42,6 @@ then
                echo "$cover is not insall...going to inatall now"
                 dnf install $cover -y
                 VALIDATE $? "$cover"
-            
-            else
             echo-e "$G $cover is already installed nothing to do"
              
 
