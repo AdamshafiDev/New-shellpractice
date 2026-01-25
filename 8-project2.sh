@@ -35,7 +35,7 @@ then
      exit 1
      fi
    }
-     for cover in {$pack[@]}
+     for cover in ${$pack[@]}
         do
             dnf list installed mysql
               if [ $? -ne 0 ]
