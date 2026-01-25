@@ -30,16 +30,16 @@ fi
          fi 
    }
 
-   for cover in ${PACKAGE[@]}
+   for cover in ${PACKAGE[@]} &>>LOG_FILE
    do
-      dnf list installed mysql 
+      dnf list installed mysql &>>LOG_FILE
        if [ $? -ne 0 ]
        then
-          echo "$cover is not install going to install now" 
+          echo "$cover is not install going to install now" tee -a $LOG_FILE
           dnf install $cover -y 
           VALIDATE $? "$cover"
        else
-          echo "$cover is install ..Nothing to do" 
+          echo "$cover is install ..Nothing to do" tee -a $LOG_FILE
        fi
    done
      
