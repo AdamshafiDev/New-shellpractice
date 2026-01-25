@@ -6,7 +6,7 @@ TIME_STAMP=$(date)
 LOG_FOLDER="/var/log/shellscript.log"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
-PACKAGE=("mysql" "nginx" "nodejs")
+PACKAGE=("mysql" "nginx" "nodejs" "python3")
 
  mkdir -p $LOG_FOLDER
 
