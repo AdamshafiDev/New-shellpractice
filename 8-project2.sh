@@ -5,11 +5,12 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-mkdir -p $Log_file
+
 
 LOG_FOLDER="/var/log/shelllogs.sh"
 Script_name=($0)
-Log_file="$LOG_FOLDER/$Script_name"
+Log_file="$LOG_FOLDER/$Script_name.log"
+ mkdir -p $Log_file
 
  TIME_STAMP=$(date)
   echo "the script start time$TIME_STAMP" | tee -a $Log_file
