@@ -3,7 +3,7 @@
 USERID=$(id -u)
 TIME_STAMP=$(date)
 #PACKAGE=("mysql" "nginx" "nodejs")
-LOG_FOLDER="/var/log/shellscript-log"
+LOG_FOLDER=$("/var/log/shellscript-log")
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 PACKAGE=("mysql" "nginx" "nodejs" "python3")
