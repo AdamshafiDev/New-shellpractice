@@ -22,27 +22,29 @@ then
   echo -e "$$R ERROR: please run the script with  root access"
   exit 1
    else 
-
-    echo -e "$Y the script running with root access"
+   echo -e "$Y the script running with root access"
  fi
+
    VALIDATE()
    {
-   if [ $1 -eq 0 ]
+    if [ $1 -eq 0 ]
     then
     echo -e "$Y Installing $2.....$G success"
      else 
      echo -e "$Y Installing $2......$R failure"
+     exit 1
      fi
    }
      for cover in {$pack[@]}
         do
             dnf list installed mysql
 
-            echo "mysql is not insall...going to inatall now"
-
-            dnf install mysql -y
+               echo "$cover is not insall...going to inatall now"
+                dnf install $cover -y
+                VALIDATE $? "$cover"
+            
             else
-            echo-e "$G mysql is already installed nothing to do"
+            echo-e "$G $cover is already installed nothing to do"
              
 
         done
