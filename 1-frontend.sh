@@ -34,8 +34,8 @@ then
      fi
    }
 
-    dnf module list nginx &>>$Log_file
-    VALIDATE $? "Nginx is module display"
+    # dnf module list nginx &>>$Log_file
+    # VALIDATE $? "Nginx is module display"
 
     dnf module disable nginx -y &>>$Log_file
     VALIDATE $? "disablling nginx"
