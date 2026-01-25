@@ -30,7 +30,7 @@ fi
          fi 
    }
 
-   for cover in ${PACKAGE[@]} &>>$LOG_FILE
+   for cover in ${PACKAGE[@]} 
    do
       dnf list installed mysql &>>$LOG_FILE
        if [ $? -ne 0 ]
