@@ -47,7 +47,7 @@ then
      systemctl start mongod
      VALIDATE "starting mongodb"
 
-     sed -i 's/127.0.0.1/ 0.0.0.0/g'/etc/mongod.conf
+     sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
      VALIDATE $? "Editing for confiq file for remote connection"
 
      systemctl restart mongod
