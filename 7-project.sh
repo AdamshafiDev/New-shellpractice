@@ -25,16 +25,16 @@ fi
          fi 
    }
 
-   for Pack in ${PACKAGE[@]}
+   for cover in ${PACKAGE[@]}
    do
       dnf list installed mysql
        if [ $? -ne 0 ]
        then
-          echo "$Pack is not install going to install now"
-          dnf install $Pack -y
-          VALIDATE $? "$Pack"
+          echo "$cover is not install going to install now"
+          dnf install $cover -y
+          VALIDATE $? "$cover"
        else
-          echo "$Pack is install ..Nothing to do"
+          echo "$cover is install ..Nothing to do"
        fi
    done
      
