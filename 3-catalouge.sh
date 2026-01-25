@@ -33,59 +33,59 @@ then
 
 
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>>$Log_file
 VALIDATE $? "Disbling mongodb"
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>>$Log_file
 VALIDATE $? "enabled nodejs:20"
 
 
-dnf install nodejs -y
+dnf install nodejs -y &>>$Log_file
 VALIDATE $? "Installing nodejs"
 
 id roboshop
 
   if [ $? -ne 0 ]
    then
-        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$Log_file
         VALIDATE $? "systemuser cerated"
   else
      echo "roboshop user already created....$Y skipping"
      fi
 
 
-mkdir -p /app 
+mkdir -p /app  &>>$Log_file
 VALIDATE $? "Directory cerated"
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  &>>$Log_file
 VALIDATE $? "downloading catalouge data"
-
+ rm -rf /app/*
 cd /app 
 
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip &>>$Log_file
 VALIDATE $? "unzipping foldercatalouge"
 
-npm install
+npm install &>>$Log_file
 VALIDATE $? "Installing dependency"
 
-cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
+cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service &>>$Log_file
 VALIDATE $? "copying catalogue services"
 
-systemctl daemon-reload
+systemctl daemon-reload &>>$Log_file
 VALIDATE $? "deamon-reload"
 
-systemctl enable catalogue 
+systemctl enable catalogue  &>>$Log_file
 VALIDATE $? "enableing catalogue"
 
-systemctl start catalogue
+systemctl start catalogue &>>$Log_file
 VALIDATE $? "started catataloge"
 
 cp $SCRIPT_DIR/mongo.repo   /etc/yum.repos.d/mongo.repo
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y &>>$Log_file
 VALIDATE $? "Installing momgodb client"
 
-mongosh --host mongodb.adamshafi.shop </app/db/master-data.js
+mongosh --host mongodb.adamshafi.shop </app/db/master-data.js &>>$Log_file
 VALIDATE $? "Loading data into mongodb"
 
 
