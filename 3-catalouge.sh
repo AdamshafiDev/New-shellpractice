@@ -50,7 +50,7 @@ id roboshop
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$Log_file
         VALIDATE $? "systemuser cerated"
   else
-     echo "roboshop user already created....$Y skipping"
+     echo -e "roboshop user already created....$Y skipping"
      fi
 
 
