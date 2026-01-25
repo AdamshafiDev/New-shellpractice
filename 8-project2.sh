@@ -37,7 +37,7 @@ then
    }
      for cover in ${$pack[@]}
         do
-            dnf list installed mysql
+            dnf list installed $cover
               if [ $? -ne 0 ]
                then
 
