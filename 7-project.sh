@@ -9,23 +9,23 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
  mkdir -p $LOG_FOLDER
 
- echo -e "the script started date::$TIME_STAMP" | tee -a $LOG_FILE
+ echo  "the script started date::$TIME_STAMP" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
-   echo -e  "ERROR:plese run the script with root access" | tee -a $LOG_FILE
+   echo   "ERROR:plese run the script with root access" | tee -a $LOG_FILE
    exit 1
 else
-   echo -e  "the script is running with root access" | tee -a $LOG_FILE
+   echo   "the script is running with root access" | tee -a $LOG_FILE
 fi
    
    VALIDATE(){
 
         if [ $1 -eq 0 ]
         then
-          echo -e  "Installing package:$2.....successs" | tee -a $LOG_FILE 
+          echo   "Installing package:$2.....successs" | tee -a $LOG_FILE 
         else
-          echo -e "Installing package:$2.....Failure"  | tee -a $LOG_FILE
+          echo  "Installing package:$2.....Failure"  | tee -a $LOG_FILE
           exit 1
          fi 
    }
