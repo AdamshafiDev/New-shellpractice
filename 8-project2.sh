@@ -9,7 +9,7 @@ Script_name=$(echo $0 | cut -d "." -f1)
 Log_file="$LOG_FOLDER/$Script_name.log"
 pack=("nginx" "mysql" "nodejs")
 
- mkdir -p $LOG_FOLDER
+ mkdir -p LOG_FOLDER
 
  TIME_STAMP=$(date)
   echo "the script start time$TIME_STAMP" | tee -a $Log_file
