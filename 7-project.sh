@@ -9,7 +9,7 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
  mkdir -p $LOG_FOLDER
 
- echo "the script started date::$TIME_STAMP" 
+ echo "the script started date::$TIME_STAMP" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
