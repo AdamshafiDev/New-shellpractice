@@ -38,12 +38,12 @@ then
 
     for cover in ${pack[@]}
     do
-            dnf list installed $cover
+            dnf list installed $cover &>>$Log_file
               if [ $? -ne 0 ]
                then
 
                echo "$cover is not insall...going to inatall now" | tee -a $Log_file
-                dnf install $cover -y
+                dnf install $cover -y &>>$Log_file
                 VALIDATE $? "$cover"
                 else
             echo " $cover is already installed nothing to do" | tee -a $Log_file
