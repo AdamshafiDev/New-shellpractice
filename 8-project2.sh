@@ -5,6 +5,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+ TIME_STAMP=$(date)
+  echo "the script start time$TIME_STAMP"
+
 if [ $USERID -ne 0 ]
 then
   echo -e "$$R ERROR: please run the script with  root access"
