@@ -41,7 +41,7 @@ then
    }
 
 
- dnf install maven -y 
+ dnf install maven -y &>>$Log_file
  VALIDATE $? "Installing maven and java"
 
  id roboshop
