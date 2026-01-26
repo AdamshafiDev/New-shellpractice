@@ -1,5 +1,5 @@
 #!/bin/bash
-START_TIME=$(date+%s)
+START_TIME=$(date +%s)
 
 USERID=$(id -u)
 R="\e[31m"s
@@ -36,7 +36,7 @@ then
 
 
 dnf module disable redis -y &>>$Log_file
-VVALIDATE $?  "Disbling redis"
+VALIDATE $?  "Disbling redis"
 
 dnf module enable redis:7 -y &>>$Log_file
 VALIDATE $?  "enabling redisdb"
@@ -55,7 +55,8 @@ VALIDATE $? "enabling the redis db"
 systemctl start redis &>>$Log_file
 VALIDATE $? "srarting redis db"
 
-END_TIME=$(date+%s)
+END_TIME=$(date +%s)
+
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
 
 echo -e "The script excution successfully:$G ..Time taken seconds $TOTAL_TIME"
