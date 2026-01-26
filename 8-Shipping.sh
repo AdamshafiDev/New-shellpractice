@@ -61,40 +61,40 @@ VALIDATE $? "Directory cerated"
 curl -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip  &>>$Log_file
 VALIDATE $? "downloading catalouge data"
 
-rm -rf /app/*
+rm -rf /app/* &>>$Log_file
 cd /app 
 
 unzip /tmp/shipping.zip &>>$Log_file
 VALIDATE $? "unzipping foldercatshipping"
 
 
-mvn clean package 
+mvn clean package  &>>$Log_file
 VALIDATE $? "clearing the package"
 
-mv target/shipping-1.0.jar shipping.jar 
-VALIDATE $? "moving and rename the jar file"
+mv target/shipping-1.0.jar shipping.jar &>>$Log_file
+VALIDATE $? "moving and rename the jar file" &>>$Log_file
 
 
-cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service
+cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service &>>$Log_file
 
-systemctl daemon-reload
+systemctl daemon-reload &>>$Log_file
 VALIDATE $? "daemon services started"
 
-systemctl enable shipping 
+systemctl enable shipping &>>$Log_file
 VALIDATE $? "Enabling the shaiipng"
 
-systemctl start shipping
+systemctl start shipping &>>$Log_file
 VALIDATE $? "starting the shipping"
 
-dnf install mysql -y 
+dnf install mysql -y &>>$Log_file
 VALIDATE $? "Installing mysql"
 
-mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql
-mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql 
-mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql
+mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$Log_file
+mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql &>>$Log_file
+mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$Log_file
 VALIDATE $? "Loading data"
 
-systemctl restart shipping
+systemctl restart shipping &>>$Log_file
 VALIDATE $? "Restarted shipping"
 
 
