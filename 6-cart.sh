@@ -51,7 +51,7 @@ id roboshop
   if [ $? -ne 0 ]
    then
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$Log_file
-        VALIDATE $? "systemcart cerated"
+        VALIDATE $? "systemuser ceratedcreated"
   else
      echo -e "roboshop user already created....$Y skipping"
      fi
