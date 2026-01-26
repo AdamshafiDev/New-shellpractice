@@ -37,7 +37,7 @@ then
 
 
 dnf module disable nodejs -y &>>$Log_file
-VALIDATE $? "Disbling mongodb"
+VALIDATE $? "Disbling nodejs"
 
 dnf module enable nodejs:20 -y &>>$Log_file
 VALIDATE $? "enabled nodejs:20"
@@ -51,7 +51,7 @@ id roboshop
   if [ $? -ne 0 ]
    then
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$Log_file
-        VALIDATE $? "systemuser ceratedcreated"
+        VALIDATE $? "systemuser created"
   else
      echo -e "roboshop user already created....$Y skipping"
      fi
@@ -60,7 +60,7 @@ id roboshop
 mkdir -p /app  &>>$Log_file
 VALIDATE $? "Directory cerated"
 
-curl -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip  &>>$Log_file
+curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip  &>>$Log_file
 VALIDATE $? "downloading cart data"
 
  rm -rf /app/*
