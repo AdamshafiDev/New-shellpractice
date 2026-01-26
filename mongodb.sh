@@ -33,22 +33,22 @@ then
      fi
    }
 
-      cp mongo.repo /etc/yum.repos.d/mongodb.repo
+      cp mongo.repo /etc/yum.repos.d/mongodb.repo &>>$Log_file
       VALIDATE $? "copying mongodb repos"
 
 
-     dnf install mongodb-org -y 
+     dnf install mongodb-org -y &>>$Log_file
      VALIDATE $? "Installing mongodb"
 
 
-     systemctl enable mongod
+     systemctl enable mongod &>>$Log_file
      VALIDATE $? "enableing mongodb"
 
-     systemctl start mongod
+     systemctl start mongod &>>$Log_file
      VALIDATE  $? "starting mongodb"
 
-     sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+     sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$Log_file
      VALIDATE $? "Editing for confiq file for remote connection"
 
-     systemctl restart mongod
+     systemctl restart mongod &>>$Log_file
      VALIDATE $? "Restarted mongodb"
