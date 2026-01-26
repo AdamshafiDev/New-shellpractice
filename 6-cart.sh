@@ -82,7 +82,10 @@ systemctl enable cart  &>>$Log_file
 VALIDATE $? "enableing cart"
 
 systemctl start cart &>>$Log_file
-VALIDATE $? "started catataloge"
+VALIDATE $? "started cart"
+
+systemctl staus cart &>>$Log_file
+VALIDATE $? "status of  cart"
 
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
