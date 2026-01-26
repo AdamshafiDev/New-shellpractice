@@ -1,5 +1,5 @@
 #!/bin/bash
-START_TIME=$(date+%S)
+START_TIME=$(date+%s)
 
 USERID=$(id -u)
 R="\e[31m"s
@@ -49,7 +49,7 @@ VALIDATE $? "Installing redis db"
 sed -i -e 's/127.0.0.1/ 0.0.0.0/g' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf &>>$Log_file
 VALIDATE $? "Edit the redis configureation to accept the remote connection"
 
-systemcctl enable redis &>>$Log_file
+systemctl enable redis &>>$Log_file
 VALIDATE $? "enabling the redis db"
 
 systemctl start redis &>>$Log_file
