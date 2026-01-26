@@ -56,6 +56,6 @@ systemctl start redis &>>$Log_file
 Validate $? "srarting redis db"
 
 END_TIME=$(date+%s)
-TOTAL_TIME=$($END_TIME-$START_DATE)
+TOTAL_TIME=$(( $END_TIME - $START_DATE ))
 
 echo -e "The script excution successfully:$G ..Time taken seconds $TOTAL_TIME"
