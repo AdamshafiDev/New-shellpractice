@@ -89,10 +89,16 @@ VALIDATE $? "starting the shipping"
 dnf install mysql -y &>>$Log_file
 VALIDATE $? "Installing mysql"
 
+mysql -h mysql.adamshafi.shop -u root -pRoboshop@1 -e 'use cities'
+
+if [ $? -ne 0 ]
+then
 mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$Log_file
 mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql &>>$Log_file
 mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$Log_file
-VALIDATE $? "Loading data"
+VALIDATE $? "Loading data into mysql"
+else
+ echo "Already data loaded..Skipping"
 
 systemctl restart shipping &>>$Log_file
 VALIDATE $? "Restarted shipping"
