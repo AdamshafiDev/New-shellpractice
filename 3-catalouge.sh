@@ -98,9 +98,10 @@ echo -e "Data already loaded ...$Y SkIIPING"
 fi
 
 END_TIME=$(date +s%)
-TOTAL_TIME=$(($END_TIME - $START_TIME))
+TOTAL_TIME=$(( $END_TIME - $START_TIME ))
 
-echo "The time tentaken for the script:$TOTAL_TIME seconds"
+echo "The time tentaken for the script:$TOTAL_TIME seconds" | tee -a $Log_file
+
 
 
 
