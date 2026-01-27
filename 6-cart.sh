@@ -90,8 +90,8 @@ VALIDATE $? "status of  cart"
 systemctl restart cart &>>$Log_file
 VALIDATE $? "Restarted cart services"
 
-# systemctl staus cart &>>$Log_file
-# VALIDATE $? "status of  cart"
+systemctl status cart &>>$Log_file
+VALIDATE $? "status of  cart"
 
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
