@@ -98,12 +98,10 @@ else
 echo -e "Data already loaded ...$Y SkIIPING"
 fi
 
-END_TIME=$(date +s%)
-TOTAL_TIME=$(( $END_TIME - $START_TIME ))
+ END_TIME=$(date +%s)
+    TOTAL_TIME=$(( $END_TIME - $START_TIME ))
 
-echo -e "$Y The time taken for the script:$TOTAL_TIME seconds" | tee -a $Log_file
-
-
+echo -e "the script running succesfully:$G....Time taken $TOTAL_TIME secounds" | tee -a $Log_file
 
 
 
