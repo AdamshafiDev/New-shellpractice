@@ -84,12 +84,6 @@ VALIDATE $? "enableing cart"
 systemctl start cart &>>$Log_file
 VALIDATE $? "started cart"
 
-systemctl staus cart &>>$Log_file
-VALIDATE $? "status of  cart"
-
-systemctl restart cart &>>$Log_file
-VALIDATE $? "Restarted cart services"
-
 systemctl status cart &>>$Log_file
 VALIDATE $? "status of  cart"
 
