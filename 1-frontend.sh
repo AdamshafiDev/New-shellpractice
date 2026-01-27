@@ -1,5 +1,5 @@
 #!/bin/bash
-
+START_TIME=$(date +%s)
 USERID=$(id -u)
 R="\e[31m"s
 G="\e[32m"
@@ -72,5 +72,10 @@ then
 
     systemctl restart nginx &>>$Log_file
     VALIDATE $? "nginx sever restarted"
+
+END_TIME=$(date +%s)
+TOTAL_TIME=$(( $END_TIME - $START_TIME ))
+
+echo -e "the script running succesfully:$G....Time taken $TOTAL_TIME secounds" | tee -a $Log_file
 
 
