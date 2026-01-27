@@ -1,3 +1,5 @@
+#!/bin/bash
+START_TIME=$(date +%s)
 USERID=$(id -u)
 R="\e[31m"s
 G="\e[32m"
@@ -95,7 +97,10 @@ else
 echo -e "Data already loaded ...$Y SkIIPING"
 fi
 
+END_TIME=$(date +s%)
+TOTAL_TIME=$(( $END_TIME - $START_TIME ))
 
+echo "The time ten for the script:$TOTAL_TIME"
 
 
 
