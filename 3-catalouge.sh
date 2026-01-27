@@ -1,4 +1,5 @@
 #!/bin/bash
+
 START_TIME=$(date +%s)
 USERID=$(id -u)
 R="\e[31m"s
@@ -100,7 +101,7 @@ fi
 END_TIME=$(date +s%)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
 
-echo "The time tentaken for the script:$TOTAL_TIME seconds" | tee -a $Log_file
+echo -e "$Y The time taken for the script:$TOTAL_TIME seconds" | tee -a $Log_file
 
 
 
