@@ -53,7 +53,7 @@ systemctl enable redis &>>$Log_file
 VALIDATE $? "enabling the redis db"
 
 systemctl start redis &>>$Log_file
-VALIDATE $? "srarting redis db"
+VALIDATE $? "starting redis db"
 
 END_TIME=$(date +%s)
 
