@@ -51,7 +51,7 @@ then
 
     systemctl start nginx &>>$Log_file
     VALIDATE $? "nginx server started"
-    
+
     systemctl status nginx &>>$Log_file
     VALIDATE $? "nginx is active and running fine"
 
@@ -62,6 +62,7 @@ then
     VALIDATE $? "download fronend data"
 
     cd /usr/share/nginx/html 
+    
     unzip /tmp/frontend.zip &>>$Log_file
     VALIDATE $? "unzipping fronend data"
 
