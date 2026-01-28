@@ -51,6 +51,7 @@ then
 
     systemctl start nginx &>>$Log_file
     VALIDATE $? "nginx server started"
+    
     systemctl status nginx &>>$Log_file
     VALIDATE $? "nginx is active and running fine"
 
