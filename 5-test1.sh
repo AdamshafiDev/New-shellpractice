@@ -1,5 +1,7 @@
 #!/bin/bash
 
-Name="Adam shafi"
+#Name="Adam shafi"
 
-echo -n "$Name" | tr -d " " | wc -c
+echo -n "$@" | tr -d " " | wc -c
+
+

@@ -1,4 +1,5 @@
 #!/bin/bash
+start_date=$(date+%s)
 USERID=$(id -u)
 R="\e[31m"s
 G="\e[32m"
