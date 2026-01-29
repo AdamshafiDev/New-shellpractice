@@ -2,65 +2,68 @@
 
 START_TIME=$(date +%s)
 
-
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-LOG_FOLDER="/var/log/shelllogs.logs"
-Script_name=$(echo $0 | cut -d "." -f1)
-Log_file="$LOG_FOLDER/$Script_name.log"
-SCRIPT_DIR=$PWD
 
+LOG_FOLDER="/var/log/shelllogs"
+SCRIPT_NAME=$(basename "$0" .sh)
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
+mkdir -p "$LOG_FOLDER"
 
- mkdir -p $LOG_FOLDER
+TIME_STAMP=$(date)
+echo "The script start time: $TIME_STAMP" | tee -a "$LOG_FILE"
 
- TIME_STAMP=$(date)
-  echo "the script start time$TIME_STAMP" | tee -a $Log_file
-
-if [ $USERID -ne 0 ]
-then
-  echo -e "$R ERROR: please run the script with  root access" | tee -a $Log_file
+# Root check
+if [ "$USERID" -ne 0 ]; then
+  echo -e "$R ERROR: please run the script with root access $N" | tee -a "$LOG_FILE"
   exit 1
-   else 
-   echo -e "$Y the script running with root access" | tee -a $Log_file
- fi
-  
- echo "enter the root password"
- read -s RABBITMQ_PASSWORD
+else
+  echo -e "$Y Script running with root access $N" | tee -a "$LOG_FILE"
+fi
 
-  VALIDATE(){
+# Read password securely
+echo "Enter RabbitMQ password:"
+read -s RABBITMQ_PASSWORD
+echo
 
-    if [ $1 -eq 0 ]
-    then
-    echo -e "$2 is....$G success $N" | tee -a $Log_file
-     else 
-     echo -e "$2 is.....$R failure $N"| tee -a $Log_file
-     exit 1
-     fi
-   }
+# Validate function
+VALIDATE() {
+  if [ "$1" -eq 0 ]; then
+    echo -e "$2 is... $G SUCCESS $N" | tee -a "$LOG_FILE"
+  else
+    echo -e "$2 is... $R FAILURE $N" | tee -a "$LOG_FILE"
+    exit 1
+  fi
+}
 
-cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>$Log_file
-VALIDATE "copying rabbitmq repo"
+# Copy repo
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>"$LOG_FILE"
+VALIDATE $? "Copying RabbitMQ repo"
 
-dnf install rabbitmq-server -y &>>$Log_file
-VALIDATE $? "Installing rabbit mq"
+# Install RabbitMQ
+dnf install rabbitmq-server -y &>>"$LOG_FILE"
+VALIDATE $? "Installing RabbitMQ"
 
-systemctl enable rabbitmq-server &>>$Log_file
-VALIDATE $? "Enableing rabbitmq"
+# Enable service
+systemctl enable rabbitmq-server &>>"$LOG_FILE"
+VALIDATE $? "Enabling RabbitMQ"
 
-systemctl start rabbitmq-server &>>$Log_file
-VALIDATE $? "staring rabbitmq"
+# Start service
+systemctl start rabbitmq-server &>>"$LOG_FILE"
+VALIDATE $? "Starting RabbitMQ"
 
+# Create user
+rabbitmqctl add_user roboshop "$RABBITMQ_PASSWORD" &>>"$LOG_FILE"
+VALIDATE $? "Creating RabbitMQ user"
 
-rabbitmqctl add_user roboshop $RABBITMQ_PASSWORD &>>$Log_file
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
-
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>"$LOG_FILE"
+VALIDATE $? "Setting RabbitMQ permissions"
 
 END_TIME=$(date +%s)
-TOTAL_TIME=$(( $END_TIME - $START_TIME ))
+TOTAL_TIME=$((END_TIME - START_TIME))
 
-echo -e "the script running succesfully:$G....Time taken $TOTAL_TIME secounds" | tee -a $Log_file
-
+echo -e "$G Script executed successfully. Time taken: $TOTAL_TIME seconds $N" | tee -a "$LOG_FILE"
