@@ -99,7 +99,7 @@ mysql -h mysql.adamshafi.shop -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-dat
 VALIDATE $? "Loading data into mysql"
 else
  echo "Already data loaded..Skipping"
-
+fi
 systemctl restart shipping &>>$Log_file
 VALIDATE $? "Restarted shipping"
 
