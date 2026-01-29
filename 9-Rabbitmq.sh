@@ -4,7 +4,7 @@ START_TIME=$(date +%s)
 
 
 USERID=$(id -u)
-R="\e[31m"s
+R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
@@ -22,15 +22,17 @@ SCRIPT_DIR=$PWD
 
 if [ $USERID -ne 0 ]
 then
-  echo -e "$$R ERROR: please run the script with  root access" | tee -a $Log_file
+  echo -e "$R ERROR: please run the script with  root access" | tee -a $Log_file
   exit 1
    else 
    echo -e "$Y the script running with root access" | tee -a $Log_file
  fi
+  
  echo "enter the root password"
-   read -s RABBITMQ_PASSWORD
+ read -s RABBITMQ_PASSWORD
 
   VALIDATE(){
+
     if [ $1 -eq 0 ]
     then
     echo -e "$2 is....$G success $N" | tee -a $Log_file
