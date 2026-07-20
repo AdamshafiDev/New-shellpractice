@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo -n  "enter the pin number  :"
+# echo -n  "enter the pin number  :"
   
-  read -s  PIN
+#   read -s  PIN
 
-  echo "the number is:"$PIN
+#   echo "the number is:"$PIN
 
 
 
@@ -25,6 +25,14 @@ echo -n  "enter the pin number  :"
 
 # echo
 # echo "Entered PIN: $PIN"
+
+
+
+
+echo -n "Enter PIN: "
+read -s PIN
+echo
+echo "PIN entered."
 
 
 
