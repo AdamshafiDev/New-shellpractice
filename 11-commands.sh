@@ -22,7 +22,7 @@ do
     PIN+="$key"
     echo -n "*"
 done
-
+ echo "the pin is $PIN"
 
 
 
