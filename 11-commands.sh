@@ -9,19 +9,19 @@
 
 
 
-# echo -n "Enter PIN: "
-# PIN=""
+ echo -n "Enter PIN: "
+ PIN=""
 
-# while IFS= read -rsn1 key
-# do
-#     # Enter key pressed
-#     if [[ $key == "" ]]; then
-#         break
-#     fi
+ while k = read -rsn1 key
+  do
+    
+     if [[ $key == "" ]]; then
+        break
+     fi
 
-#     PIN+="$key"
-#     echo -n "*"
-# done
+    PIN+="$key"
+    echo -n "*"
+   done
 
 # echo
 # echo "Entered PIN: $PIN"
@@ -29,9 +29,6 @@
 
 
 
-echo -n "Enter PIN: "
-read -s PIN
-echo
-printf '%*s\n' "${#PIN}" '' | tr ' ' '*'
+
 
 
