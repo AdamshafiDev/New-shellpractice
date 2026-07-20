@@ -32,7 +32,6 @@
 echo -n "Enter PIN: "
 read -s PIN
 echo
-echo "PIN entered."
-
+printf '%*s\n' "${#PIN}" '' | tr ' ' '*'
 
 
