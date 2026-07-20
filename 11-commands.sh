@@ -12,7 +12,7 @@
  echo -n "Enter PIN: "
  PIN=""
 
- while k = read -rsn1 key
+ while IFS = read -rsn1 key
   do
     
      if [[ $key == "" ]]; then
