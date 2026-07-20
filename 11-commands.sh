@@ -17,10 +17,10 @@
     
      if [[ $key == "" ]]; then
         break
-     fi
+      fi
 
-    PIN+="$key"
-    echo -n "*"
+     PIN+="$key"
+     echo -n "*"
    done
 
 # echo
