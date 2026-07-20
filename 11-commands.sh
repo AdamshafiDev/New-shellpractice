@@ -10,9 +10,9 @@
 
 
  echo -n "Enter PIN: "
- PIN=""
+  PIN=""
 
- while IFS = read -rsn1 key
+while IFS = read -rsn1 key
   do
     
      if [[ $key == "" ]]; then
@@ -21,7 +21,7 @@
 
      PIN+="$key"
      echo -n "*"
-   done
+done
 
 # echo
 # echo "Entered PIN: $PIN"
